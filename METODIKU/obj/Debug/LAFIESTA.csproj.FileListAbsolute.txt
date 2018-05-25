@@ -1,0 +1,31 @@
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\METODIKU.exe.config
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\METODIKU.exe
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\METODIKU.pdb
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.csprojResolveAssemblyReference.cache
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.Properties.Resources.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.csproj.GenerateResource.cache
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.csproj.CoreCompileInputs.cache
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.exe
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.pdb
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.Login.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.Cadastro.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\Npgsql.dll
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\Mono.Security.dll
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\Npgsql.pdb
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\bin\Debug\Npgsql.xml
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.csproj.CopyComplete
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\METODIKU\METODIKU\obj\Debug\METODIKU.EsqueceuSenha.resources
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.csprojResolveAssemblyReference.cache
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.Cadastro.resources
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.EsqueceuSenha.resources
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.Login.resources
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.csproj.GenerateResource.Cache
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.exe
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.pdb
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\bin\Debug\METODIKU.exe.config
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\bin\Debug\METODIKU.exe
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\bin\Debug\METODIKU.pdb
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\bin\Debug\Mono.Security.dll
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\bin\Debug\Npgsql.pdb
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\bin\Debug\Npgsql.xml
+C:\Users\Aluno\Downloads\METODIKU\METODIKU\obj\Debug\METODIKU.Properties.Resources.resources
