@@ -12,6 +12,10 @@ namespace METODIKU
 {
     public partial class Comida : Form
     {
+        BD_ITENS itens = new BD_ITENS();
+        BD_FESTA festa = new BD_FESTA();
+        BD_CONVIDADOS convidados = new BD_CONVIDADOS();
+
         public Comida()
         {
             InitializeComponent();
@@ -19,9 +23,6 @@ namespace METODIKU
 
         private void Comida_Load(object sender, EventArgs e)
         {
-            BD_ITENS itens = new BD_ITENS();
-            BD_FESTA festa = new BD_FESTA();
-
             comboBox1.DataSource = itens.grupoComidas();
             comboBox1.DisplayMember = "nome";
             comboBox1.ValueMember = "id";
@@ -33,7 +34,6 @@ namespace METODIKU
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BD_ITENS itens = new BD_ITENS();
             int index = 9;
             if (index != comboBox1.SelectedIndex)
             {
@@ -49,14 +49,100 @@ namespace METODIKU
 
         private void button2_Click(object sender, EventArgs e)
         {
-            BD_ITENS itens = new BD_ITENS();
-            BD_FESTA festa = new BD_FESTA();
+            double total = 0;
 
             int verifica = itens.verificaComida(festa.pegarFesta(AutenticacaoCliente.pegarId()), comboBox2.Text);
-
-            if(verifica == 0)
+            if(comboBox1.Text == "CHURRASCO" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 4))
             {
-                bool sucesso = itens.CadastraComida(comboBox2.Text);
+                //Calculo CARNES HOMENS
+                long quantidade = itens.quantidadeCarne() + 1;
+                quantidade = 600 / quantidade;
+                quantidade *= convidados.TotalHomens();
+                total = int.Parse(quantidade.ToString());
+
+                //Calculo CARNES MULHERES
+                quantidade = itens.quantidadeCarne() + 1;
+                quantidade = 400 / quantidade;
+                quantidade *= convidados.TotalMulheres();
+                total += int.Parse(quantidade.ToString());
+
+                //Calculo CARNES CRIANÇAS
+                quantidade = itens.quantidadeCarne() + 1;
+                quantidade = 200 / quantidade;
+                quantidade *= convidados.TotalMulheres();
+                total += int.Parse(quantidade.ToString());
+
+                itens.AtualizarCarnes(total.ToString());
+            }else if(comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 5) //QUEIJO COALHO
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 5.0;
+            }
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 6) //PÃO DE ALHO
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
+            }
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 7) // MAIONESE
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
+                total *= 500;
+            }
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 8) //ARROZ
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 6.0;
+            }
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 9) //FAROFA
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
+            }
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 10) //PÃO FRANCÊS
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 2;
+            }
+            else if (comboBox1.Text == "CHURRASCO" && (comboBox2.SelectedIndex == 11 || comboBox2.SelectedIndex == 12)) //SALADA
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 150;
+            }
+
+            if(comboBox1.Text == "FINGER FOODS" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 10)){ // SALGADINHOS
+                if (int.Parse(itens.totalComidas().ToString()) == 0)
+                {
+                    total = int.Parse(convidados.TotalConvidados().ToString()) * 15;
+                }
+                else
+                {
+                    total = (int.Parse(convidados.TotalConvidados().ToString()) * 8) / (int) itens.totalComidas();
+                    itens.AtualizarSalgadinhos(total.ToString());
+                }
+            }
+            else if (comboBox1.Text == "FINGER FOODS" && (comboBox2.SelectedIndex >= 11 && comboBox2.SelectedIndex <= 13)){ //PASTEL
+                if (int.Parse(itens.totalComidas().ToString()) == 0)
+                {
+                    total = int.Parse(convidados.TotalConvidados().ToString()) * 10;
+                }
+                else
+                {
+                    total = (int.Parse(convidados.TotalConvidados().ToString()) * 2) / (int)itens.totalComidas();
+                    itens.AtualizarPasteis(total.ToString());
+                }
+            }
+
+            if (comboBox1.Text == "DOCE" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 6))
+            {
+                    total = (int.Parse(convidados.TotalConvidados().ToString()) * 6);
+            }
+            else if (comboBox1.Text == "DOCE" && comboBox2.SelectedIndex == 7)
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 150);
+            }
+            else if (comboBox1.Text == "DOCE" && comboBox2.SelectedIndex == 8)
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 200);
+            }
+
+            total = Math.Ceiling(total);
+            if (verifica == 0)
+            {
+                bool sucesso = itens.CadastraComida(comboBox1.Text, comboBox2.Text, total.ToString());
                 if (sucesso)
                     dataGridView1.DataSource = itens.comidas(festa.pegarFesta(AutenticacaoCliente.pegarId()));
                 else if (!sucesso)
@@ -74,12 +160,36 @@ namespace METODIKU
 
         private void button3_Click(object sender, EventArgs e)
         {
-            BD_FESTA festa = new BD_FESTA();
-            BD_ITENS itens = new BD_ITENS();
-
+            int total = 0;
             int idFesta = festa.pegarFesta(AutenticacaoCliente.pegarId());
             int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             bool sucesso = itens.RemoverComida(id, idFesta);
+
+            String grupo = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+            if(grupo == "CHURRASCO")
+            {
+                //Calculo CARNES HOMENS
+                long quantidade = itens.quantidadeCarne();
+                quantidade = 600 / quantidade;
+                quantidade *= convidados.TotalHomens();
+                total = int.Parse(quantidade.ToString());
+
+                //Calculo CARNES MULHERES
+                quantidade = itens.quantidadeCarne();
+                quantidade = 400 / quantidade;
+                quantidade *= convidados.TotalMulheres();
+                total += int.Parse(quantidade.ToString());
+
+                //Calculo CARNES CRIANÇAS
+                quantidade = itens.quantidadeCarne();
+                quantidade = 200 / quantidade;
+                quantidade *= convidados.TotalMulheres();
+                total += int.Parse(quantidade.ToString());
+
+                itens.AtualizarCarnes(total.ToString());
+            }
+            
             if (sucesso)
                 dataGridView1.DataSource = itens.comidas(idFesta);
             else if (!sucesso)

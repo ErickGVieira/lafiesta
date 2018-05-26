@@ -24,7 +24,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string buscar = String.Format("select * from festa where id_usuario = '{0}' order by id ASC;", idUser);
+                string buscar = String.Format("select * from festa where id_usuario = '{0}' order by id DESC;", idUser);
 
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(buscar, this.conn))
                 {

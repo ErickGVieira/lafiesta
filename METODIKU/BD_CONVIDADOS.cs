@@ -107,8 +107,6 @@ namespace METODIKU
 
         public long TotalConvidados()
         {
-            DataTable dt = new DataTable();
-
             try
             {
                 this.conn = new NpgsqlConnection(this.connString);
@@ -183,6 +181,138 @@ namespace METODIKU
             {
                 this.conn.Close();
             }
+        }
+
+        public long TotalCriancas()
+        {
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string totalConvidados = String.Format("select count(*) from convidado where idade <= 15 and id_usuario = '{0}'", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(totalConvidados, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            return dr.GetInt64(0);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                    }
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return 0;
+        }
+
+        public long TotalHomens()
+        {
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string totalConvidados = String.Format("select count(*) from convidado where idade > 15 and sexo = 'Masculino' and id_usuario = '{0}'", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(totalConvidados, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            return dr.GetInt64(0);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                    }
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return 0;
+        }
+
+        public long TotalMulheres()
+        {
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string totalConvidados = String.Format("select count(*) from convidado where idade > 15 and sexo = 'Feminino' and id_usuario = '{0}'", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(totalConvidados, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            return dr.GetInt64(0);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                    }
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return 0;
         }
     }
 }

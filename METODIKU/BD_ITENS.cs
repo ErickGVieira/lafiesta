@@ -101,7 +101,7 @@ namespace METODIKU
             return dt;
         }
 
-        public bool CadastraComida(String tipo)
+        public bool CadastraComida(String grupo, String tipo, String quantidade)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string cmdInserir = String.Format("Insert Into comida(tipo, id_festa) values('{0}',{1})", tipo, festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                string cmdInserir = String.Format("Insert Into comida(tipo, id_festa, grupo, quantidade) values('{0}',{1}, '{2}', '{3}')", tipo, festa.pegarFesta(AutenticacaoCliente.pegarId()), grupo, quantidade);
 
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
                 {
@@ -181,7 +181,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string convidados = String.Format("select c.id, g.nome, c.tipo from comida c, tipo_comida t, grupo_comida g where id_festa = {0} and c.tipo = t.nome and t.id_grupo = g.id", idFesta);
+                string convidados = String.Format("select c.id, g.nome, c.tipo, c.quantidade from comida c, tipo_comida t, grupo_comida g where id_festa = {0} and c.tipo = t.nome and t.id_grupo = g.id order by c.id", idFesta);
 
                 using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(convidados, this.conn))
                 {
@@ -463,6 +463,190 @@ namespace METODIKU
                 this.conn.Close();
             }
             return 0;
+        }
+
+        public long quantidadeCarne()
+        {
+            try
+            {
+                BD_FESTA festa = new BD_FESTA();
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string verificaComida = String.Format("select count(*) from comida where id_festa = '{0}' and (grupo = 'CHURRASCO' and (tipo like '%CARNE%' or tipo like '%LINGUI%'))", festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(verificaComida, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            return dr.GetInt64(0);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                    }
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return 0;
+        }
+
+        public void AtualizarCarnes(String quantidade)
+        {
+            try
+            {
+                BD_FESTA festa = new BD_FESTA();
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string atualizar = String.Format("UPDATE comida SET quantidade = '{0}' where id_festa = {1}  and (grupo = 'CHURRASCO' and (tipo like '%CARNE%' or tipo like '%LINGUI%'))", quantidade, festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                Console.WriteLine(atualizar);
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(atualizar, this.conn))
+                {
+                    pgsqlcommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                //throw ex;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+        }
+
+        public long totalComidas()
+        {
+            try
+            {
+                BD_FESTA festa = new BD_FESTA();
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string verificaComida = String.Format("select count(*) from comida where id_festa = {0}", festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(verificaComida, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            return dr.GetInt64(0);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                    }
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return 0;
+        }
+
+        public void AtualizarSalgadinhos(String quantidade)
+        {
+            try
+            {
+                BD_FESTA festa = new BD_FESTA();
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string atualizar = String.Format("UPDATE comida SET quantidade = '{0}' where id_festa = {1}  and (grupo = 'FINGER FOODS' and tipo not like '%PASTEL%')", quantidade, festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                Console.WriteLine(atualizar);
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(atualizar, this.conn))
+                {
+                    pgsqlcommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                //throw ex;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+        }
+
+        public void AtualizarPasteis(String quantidade)
+        {
+            try
+            {
+                BD_FESTA festa = new BD_FESTA();
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string atualizar = String.Format("UPDATE comida SET quantidade = '{0}' where id_festa = {1}  and (grupo = 'FINGER FOODS' and tipo like '%PASTEL%')", quantidade, festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                Console.WriteLine(atualizar);
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(atualizar, this.conn))
+                {
+                    pgsqlcommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                //throw ex;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
         }
     }
 }

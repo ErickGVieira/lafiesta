@@ -126,3 +126,8 @@ H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.MinhaConta.resources
 H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.ResponderMensagem.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.Bebida.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.ResponderMensagem.resources
+F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.Bebida.resources
+F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.ListaMensagem.resources
+F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.Mensagem.resources
+F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.MinhaConta.resources
+F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.ResponderMensagem.resources
