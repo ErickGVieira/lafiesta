@@ -300,5 +300,10 @@ namespace METODIKU
             Bebida bebida = new Bebida();
             bebida.Show();
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
