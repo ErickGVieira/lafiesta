@@ -50,6 +50,7 @@ namespace METODIKU
         private void button2_Click(object sender, EventArgs e)
         {
             double total = 0;
+            String grandeza = null;
 
             int verifica = itens.verificaComida(festa.pegarFesta(AutenticacaoCliente.pegarId()), comboBox2.Text);
             if(comboBox1.Text == "CHURRASCO" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 4))
@@ -73,37 +74,45 @@ namespace METODIKU
                 total += int.Parse(quantidade.ToString());
 
                 itens.AtualizarCarnes(total.ToString());
+                grandeza = "g";
             }else if(comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 5) //QUEIJO COALHO
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 5.0;
+                grandeza = " pct";
             }
             else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 6) //PÃO DE ALHO
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
+                grandeza = " pct";
             }
             else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 7) // MAIONESE
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
                 total *= 500;
+                grandeza = "g";
             }
             else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 8) //ARROZ
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 6.0;
+                grandeza ="kg";
             }
             else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 9) //FAROFA
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
+                grandeza = " pct";
             }
             else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 10) //PÃO FRANCÊS
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) * 2;
+                grandeza = " unidade(s)";
             }
             else if (comboBox1.Text == "CHURRASCO" && (comboBox2.SelectedIndex == 11 || comboBox2.SelectedIndex == 12)) //SALADA
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) * 150;
+                grandeza = "g";
             }
 
-            if(comboBox1.Text == "FINGER FOODS" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 10)){ // SALGADINHOS
+            if (comboBox1.Text == "FINGER FOODS" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 10)){ // SALGADINHOS
                 if (int.Parse(itens.totalComidas().ToString()) == 0)
                 {
                     total = int.Parse(convidados.TotalConvidados().ToString()) * 15;
@@ -113,6 +122,7 @@ namespace METODIKU
                     total = (int.Parse(convidados.TotalConvidados().ToString()) * 8) / (int) itens.totalComidas();
                     itens.AtualizarSalgadinhos(total.ToString());
                 }
+                grandeza = " unidade(s)";
             }
             else if (comboBox1.Text == "FINGER FOODS" && (comboBox2.SelectedIndex >= 11 && comboBox2.SelectedIndex <= 13)){ //PASTEL
                 if (int.Parse(itens.totalComidas().ToString()) == 0)
@@ -124,25 +134,113 @@ namespace METODIKU
                     total = (int.Parse(convidados.TotalConvidados().ToString()) * 2) / (int)itens.totalComidas();
                     itens.AtualizarPasteis(total.ToString());
                 }
+                grandeza = " unidade(s)";
             }
 
             if (comboBox1.Text == "DOCE" && (comboBox2.SelectedIndex >= 0 && comboBox2.SelectedIndex <= 6))
             {
                     total = (int.Parse(convidados.TotalConvidados().ToString()) * 6);
+                grandeza = " unidade(s)";
             }
-            else if (comboBox1.Text == "DOCE" && comboBox2.SelectedIndex == 7)
+            else if (comboBox1.Text == "DOCE" && comboBox2.SelectedIndex == 7) // BOLO FESTA
             {
                 total = (int.Parse(convidados.TotalConvidados().ToString()) * 150);
+                grandeza = "g";
             }
-            else if (comboBox1.Text == "DOCE" && comboBox2.SelectedIndex == 8)
+            else if (comboBox1.Text == "DOCE" && comboBox2.SelectedIndex == 8) // BOLO SIMPLES
             {
                 total = (int.Parse(convidados.TotalConvidados().ToString()) * 200);
+                grandeza = "g";
+            }
+
+            if (comboBox1.Text == "FRIOS" && comboBox2.SelectedIndex == 0) //MUSSARELA
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 75);
+                grandeza = "g";
+            }
+            else if (comboBox1.Text == "FRIOS" && comboBox2.SelectedIndex == 1) // PRESUNTO
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 50);
+                grandeza = "g";
+            }
+            else if (comboBox1.Text == "FRIOS" && (comboBox2.SelectedIndex >= 2 && comboBox2.SelectedIndex <= 4)) //SALAME, MORTADELA, COPA
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 25);
+                grandeza = "g";
+            }
+
+            if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 0) //PÃO
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 3);
+                grandeza = " unidade(s)";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 1) //TORRADA
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 2);
+                grandeza = " unidade(s)";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 2) //BOLACHA RECHEADA
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) / 5.0);
+                grandeza = " pct";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 3) //BISCOITO
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 150);
+                grandeza = "g";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 4) //PÃO DE QUEIJO
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) * 5);
+                grandeza = " unidade(s)";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 5) // REQUEIJÃO
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) / 8.0);
+                grandeza = " pote";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && comboBox2.SelectedIndex == 6) // CREPIOCA
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString());
+                grandeza = " unidade(s)";
+            }
+
+            if (comboBox1.Text == "VEGETARIANA" && comboBox2.SelectedIndex == 0) //TORTA DE LEGUMES
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) / 6.0);
+                grandeza = "kg";
+            }
+            else if (comboBox1.Text == "VEGETARIANA" && (comboBox2.SelectedIndex == 0 || comboBox2.SelectedIndex == 1)) //SALGADO, PÃO DE QUEIJO
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) / 5.0);
+                grandeza = " unidade(s)";
+            }
+            else if (comboBox1.Text == "VEGETARIANA" && comboBox2.SelectedIndex == 3) //SALADA
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 150;
+                grandeza = "g";
+            }
+
+            if (comboBox1.Text == "BOTECO" && (comboBox2.SelectedIndex == 0 || comboBox2.SelectedIndex == 1)) //POLENTA, MANDIOCA
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 6.0;
+                grandeza = "kg";
+            }
+            else if (comboBox1.Text == "BOTECO" && comboBox2.SelectedIndex == 0) //AMENDOIM
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 100;
+                grandeza = "g";
+            }
+            else if (comboBox1.Text == "BOTECO" && comboBox2.SelectedIndex == 0) //TORRESMO
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 8.0;
+                grandeza = "kg";
             }
 
             total = Math.Ceiling(total);
             if (verifica == 0)
             {
-                bool sucesso = itens.CadastraComida(comboBox1.Text, comboBox2.Text, total.ToString());
+                bool sucesso = itens.CadastraComida(comboBox1.Text, comboBox2.Text, total.ToString() + grandeza);
                 if (sucesso)
                     dataGridView1.DataSource = itens.comidas(festa.pegarFesta(AutenticacaoCliente.pegarId()));
                 else if (!sucesso)
