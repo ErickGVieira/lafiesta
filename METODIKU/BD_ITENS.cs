@@ -316,7 +316,7 @@ namespace METODIKU
             return dt;
         }
 
-        public bool CadastraBebida(String tipo)
+        public bool CadastraBebida(String tipo, String quantidade)
         {
             try
             {
@@ -326,7 +326,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string cmdInserir = String.Format("Insert Into bebida(tipo, id_festa) values('{0}',{1})", tipo, festa.pegarFesta(AutenticacaoCliente.pegarId()));
+                string cmdInserir = String.Format("Insert Into bebida(tipo, id_festa, quantidade) values('{0}',{1},'{2}')", tipo, festa.pegarFesta(AutenticacaoCliente.pegarId()), quantidade);
 
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
                 {
@@ -362,7 +362,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string convidados = String.Format("select c.id, g.nome, c.tipo from bebida c, tipo_bebida t, grupo_bebida g where id_festa = {0} and c.tipo = t.nome and t.id_grupo = g.id", idFesta);
+                string convidados = String.Format("select c.id, g.nome, c.tipo, c.quantidade from bebida c, tipo_bebida t, grupo_bebida g where id_festa = {0} and c.tipo = t.nome and t.id_grupo = g.id", idFesta);
 
                 using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(convidados, this.conn))
                 {

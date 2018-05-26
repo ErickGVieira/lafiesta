@@ -12,6 +12,10 @@ namespace METODIKU
 {
     public partial class Bebida : Form
     {
+        BD_ITENS itens = new BD_ITENS();
+        BD_FESTA festa = new BD_FESTA();
+        BD_CONVIDADOS convidados = new BD_CONVIDADOS();
+
         public Bebida()
         {
             InitializeComponent();
@@ -19,9 +23,6 @@ namespace METODIKU
 
         private void Bebida_Load(object sender, EventArgs e)
         {
-            BD_ITENS itens = new BD_ITENS();
-            BD_FESTA festa = new BD_FESTA();
-
             comboBox1.DataSource = itens.grupoBebidas();
             comboBox1.DisplayMember = "nome";
             comboBox1.ValueMember = "id";
@@ -33,7 +34,6 @@ namespace METODIKU
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BD_ITENS itens = new BD_ITENS();
             int index = 9;
             if (index != comboBox1.SelectedIndex)
             {
@@ -49,14 +49,57 @@ namespace METODIKU
 
         private void button2_Click(object sender, EventArgs e)
         {
-            BD_ITENS itens = new BD_ITENS();
-            BD_FESTA festa = new BD_FESTA();
+            double total = 0;
+            String grandeza = null;
 
             int verifica = itens.verificaBebida(festa.pegarFesta(AutenticacaoCliente.pegarId()), comboBox2.Text);
-
-            if(verifica == 0)
+            if (comboBox1.Text == "ALCOOLICAS" && comboBox2.SelectedIndex == 0)
             {
-                bool sucesso = itens.CadastraBebida(comboBox2.Text);
+                total = int.Parse(convidados.TotalHomens().ToString()) * 1000;
+                grandeza = "ml";
+            }else if (comboBox1.Text == "ALCOOLICAS" && (comboBox2.SelectedIndex == 1 || comboBox1.SelectedIndex == 2))
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) / 20.0;
+                total *= 1000;
+                grandeza = "ml";
+            }
+
+            if (comboBox1.Text == "REFRIGERANTES")
+            {
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 500;
+                grandeza = "ml";
+            }
+
+            if (comboBox1.Text == "SUCOS")
+            {
+                total = (int.Parse(convidados.TotalConvidados().ToString()) - int.Parse(convidados.TotalCriancas().ToString())) * 500;
+                total += int.Parse(convidados.TotalCriancas().ToString()) * 300;
+                grandeza = "ml";
+            }
+
+            if(comboBox1.Text == "ÁGUAS" && comboBox2.SelectedIndex == 0)
+            {
+                total = int.Parse(convidados.TotalCriancas().ToString()) * 100;
+                grandeza = "ml";
+            }else if (comboBox1.Text == "ÁGUAS" && comboBox2.SelectedIndex == 0)
+            {
+                total = int.Parse(convidados.TotalCriancas().ToString()) * 300;
+                grandeza = "ml";
+            }
+
+            if(comboBox1.Text == "COFFEE BREAK" && (comboBox2.SelectedIndex == 0 || comboBox2.SelectedIndex == 2))
+            {
+                total = int.Parse(convidados.TotalCriancas().ToString()) * 200;
+                grandeza = "ml";
+            }
+            else if (comboBox1.Text == "COFFEE BREAK" && (comboBox2.SelectedIndex == 1 || comboBox2.SelectedIndex == 3))
+            {
+                total = int.Parse(convidados.TotalCriancas().ToString()) * 100;
+                grandeza = "ml";
+            }
+            if (verifica == 0)
+            {
+                bool sucesso = itens.CadastraBebida(comboBox2.Text, total.ToString() + grandeza);
                 if (sucesso)
                     dataGridView1.DataSource = itens.bebidas(festa.pegarFesta(AutenticacaoCliente.pegarId()));
                 else if (!sucesso)
@@ -73,9 +116,6 @@ namespace METODIKU
 
         private void button3_Click(object sender, EventArgs e)
         {
-            BD_FESTA festa = new BD_FESTA();
-            BD_ITENS itens = new BD_ITENS();
-
             int idFesta = festa.pegarFesta(AutenticacaoCliente.pegarId());
             int id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             bool sucesso = itens.RemoverBebida(id, idFesta);

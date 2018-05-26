@@ -62,6 +62,7 @@ namespace METODIKU
         {
             try
             {
+                Encoding enc = new UTF8Encoding(true, true);
                 this.conn = new NpgsqlConnection(this.connString);
 
                 //Abra a conexão com o PgSQL                  
@@ -70,22 +71,24 @@ namespace METODIKU
                 string cmdInserir = String.Format("Insert Into festa(local, id_usuario, convidados, data, nome_festa) values('{0}',{1},{2},'{3}','{4}')", Festa.pegarLocal(), AutenticacaoCliente.pegarId(),
                        Festa.pegarConvidados(), Festa.pegarData(), Festa.pegarNome());
 
+                byte[] bytes = Encoding.Default.GetBytes(cmdInserir);
+                cmdInserir = Encoding.UTF8.GetString(bytes);
+
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
                 {
                     pgsqlcommand.ExecuteNonQuery();
                     return true;
                 }
-
             }
             catch (NpgsqlException ex)
             {
-                //throw ex;
-                return true;
+                throw ex;
+                //return true;
             }
             catch (Exception ex)
             {
-                //throw ex;
-                return true;
+                throw ex;
+                //return true;
             }
             finally
             {
@@ -98,12 +101,16 @@ namespace METODIKU
             try
             {
                 this.conn = new NpgsqlConnection(this.connString);
+                Encoding enc = new UTF8Encoding(true, true);
 
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
                 string cmdInserir = String.Format("UPDATE festa SET local = '{0}', convidados = {1}, data = '{2}', nome_festa = '{3}' where id = {4} and id_usuario = {5}", Festa.pegarLocal(),
                        Festa.pegarConvidados(), Festa.pegarData(), Festa.pegarNome(), Festa.pegarId(), AutenticacaoCliente.pegarId());
+
+                byte[] bytes = Encoding.Default.GetBytes(cmdInserir);
+                cmdInserir = Encoding.UTF8.GetString(bytes);
 
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
                 {
