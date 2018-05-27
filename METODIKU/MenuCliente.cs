@@ -53,5 +53,12 @@ namespace METODIKU
             MinhaConta minhaConta = new MinhaConta();
             minhaConta.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CalculadoraSimples calculadoraSimples = new CalculadoraSimples();
+            calculadoraSimples.Show();
+        }
     }
 }

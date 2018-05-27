@@ -77,6 +77,12 @@
     <Compile Include="CadastroFornecedor.Designer.cs">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalculadoraSimples.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalculadoraSimples.Designer.cs">
+      <DependentUpon>CalculadoraSimples.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroFornecedor.resx">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalculadoraSimples.resx">
+      <DependentUpon>CalculadoraSimples.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comida.resx">
       <DependentUpon>Comida.cs</DependentUpon>

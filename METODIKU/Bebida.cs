@@ -57,7 +57,7 @@ namespace METODIKU
             {
                 total = int.Parse(convidados.TotalHomens().ToString()) * 1000;
                 grandeza = "ml";
-            }else if (comboBox1.Text == "ALCOOLICAS" && (comboBox2.SelectedIndex == 1 || comboBox1.SelectedIndex == 2))
+            }else if (comboBox1.Text == "ALCOOLICAS" && (comboBox2.SelectedIndex == 1 || comboBox2.SelectedIndex == 2))
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 20.0;
                 total *= 1000;
@@ -97,6 +97,8 @@ namespace METODIKU
                 total = int.Parse(convidados.TotalCriancas().ToString()) * 100;
                 grandeza = "ml";
             }
+
+            total = Math.Ceiling(total);
             if (verifica == 0)
             {
                 bool sucesso = itens.CadastraBebida(comboBox2.Text, total.ToString() + grandeza);
