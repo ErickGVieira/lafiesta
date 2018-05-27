@@ -10,6 +10,7 @@ namespace METODIKU
     {
         static int id;
         static String cpf;
+        static String cnpj;
         static String nome;
         static String nomeUsuario;
         static String endereco;
@@ -32,9 +33,22 @@ namespace METODIKU
             endereco = enderecoBD;
             telefone = telefoneBD;
             email = emailBD;
+            senha = senhaBD;
 
         }
 
+        static public void Fornecedor(int idBD, String cnpjBD, String nomeBD, String nomeUsuarioBD, String enderecoBD, String telefoneBD, String emailBD, String senhaBD)
+        {
+            id = idBD;
+            cnpj = cnpjBD;
+            nome = nomeBD;
+            nomeUsuario = nomeUsuarioBD;
+            endereco = enderecoBD;
+            telefone = telefoneBD;
+            email = emailBD;
+            senha = senhaBD;
+
+        }
         static public void Sair()
         {
             id = 0;
@@ -53,6 +67,38 @@ namespace METODIKU
         static public int pegarTipo()
         {
             return tipo;
+        }
+        static public String pegarCpf()
+        {
+            return cpf;
+        }
+        static public String pegarCnpj()
+        {
+            return cnpj;
+        }
+        static public String pegarNome()
+        {
+            return nome;
+        }
+        static public String pegarNomeUsuario()
+        {
+            return nomeUsuario;
+        }
+        static public String pegarEndereco()
+        {
+            return endereco;
+        }
+        static public String pegarTelefone()
+        {
+            return telefone;
+        }
+        static public String pegarEmail()
+        {
+            return email;
+        }
+        static public String pegarSenha()
+        {
+            return senha;
         }
     }
 }

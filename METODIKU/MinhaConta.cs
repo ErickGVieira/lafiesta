@@ -12,6 +12,8 @@ namespace METODIKU
 {
     public partial class MinhaConta : Form
     {
+        BD_USUARIO usuario = new BD_USUARIO();
+
         public MinhaConta()
         {
             InitializeComponent();
@@ -35,6 +37,45 @@ namespace METODIKU
         {
             BD_OPINIAO opiniao = new BD_OPINIAO();
             label1.Text = opiniao.ListaOpinioesRespondida().ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Deseja realmente excluir a sua conta?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                bool excluido = usuario.ExcluirUsuario();
+                if (excluido)
+                {
+                    AutenticacaoCliente.Sair();
+                    this.Hide();
+                    Login login = new Login();
+                    login.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao excluir sua conta", "Erro!", MessageBoxButtons.OK);
+                }
+                    
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int tipo = AutenticacaoCliente.pegarTipo();
+
+            if(tipo == 2)
+            {
+                this.Hide();
+                Cadastro cadastro = new Cadastro();
+                cadastro.Show();
+            }
+
+            if (tipo == 1)
+            {
+                this.Hide();
+                CadastroFornecedor cadastroFornecedor = new CadastroFornecedor();
+                cadastroFornecedor.Show();
+            }
         }
     }
 }

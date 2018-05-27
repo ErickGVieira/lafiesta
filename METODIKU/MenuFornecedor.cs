@@ -27,5 +27,12 @@ namespace METODIKU
                 login.Show();
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MinhaConta minhaConta = new MinhaConta();
+            this.Hide();
+            minhaConta.Show();
+        }
     }
 }
