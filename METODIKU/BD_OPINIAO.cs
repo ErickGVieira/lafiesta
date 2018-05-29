@@ -14,10 +14,12 @@ namespace METODIKU
         //private String connString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=ifsp;Database=LAFIESTA;";
         private NpgsqlConnection conn;
 
-        public bool CadastrarOpiniao(int classificacao, String descricao, int destino)
+        public bool CadastrarOpiniaoLF(int classificacao, String descricao, int destino)
         {
             try
             {
+                Encoding enc = new UTF8Encoding(true, true);
+
                 this.conn = new NpgsqlConnection(this.connString);
 
                 //Abra a conexão com o PgSQL                  
@@ -25,6 +27,9 @@ namespace METODIKU
 
                 string cmdInserir = String.Format("Insert INTO opiniao (classificacao, id_usuario, descricao, destino) values({0},{1},'{2}', {3})", classificacao, AutenticacaoCliente.pegarId(),
                        descricao, destino);
+
+                byte[] bytes = Encoding.Default.GetBytes(cmdInserir);
+                cmdInserir = Encoding.UTF8.GetString(bytes);
 
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
                 {
@@ -42,6 +47,45 @@ namespace METODIKU
             {
                 //throw ex;
                 return false;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+        }
+
+        public bool CadastrarOpiniao(String descricao, int destino)
+        {
+            try
+            {
+                Encoding enc = new UTF8Encoding(true, true);
+
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string cmdInserir = String.Format("Insert INTO opiniao (descricao, destino) values('{0}', {1})", descricao, destino);
+
+                byte[] bytes = Encoding.Default.GetBytes(cmdInserir);
+                cmdInserir = Encoding.UTF8.GetString(bytes);
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
+                {
+                    pgsqlcommand.ExecuteNonQuery();
+                    return true;
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+                //return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //return false;
             }
             finally
             {
@@ -117,7 +161,7 @@ namespace METODIKU
             return dt;
         }
 
-        public long ListaOpinioesRespondida()
+        public long SomaOpinioesRespondida()
         {
             try
             {
@@ -208,6 +252,40 @@ namespace METODIKU
                 this.conn.Close();
             }
             return 0;
+        }
+
+        public DataTable ListaOpinioesRespondidas()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string convidados = String.Format("Select id,descricao from opiniao where destino = {0}", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(convidados, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                //throw ex;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
         }
     }
 }

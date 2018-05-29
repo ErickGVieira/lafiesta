@@ -22,6 +22,7 @@ namespace METODIKU
             if(AutenticacaoCliente.pegarTipo() == 3)
             {
                 button3.Visible = true;
+                button7.Visible = true;
                 BD_OPINIAO opiniao = new BD_OPINIAO();
                 dataGridView1.DataSource = opiniao.ListaOpinioesAdministrador();
             }

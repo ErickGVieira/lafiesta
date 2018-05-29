@@ -121,6 +121,12 @@
     <Compile Include="Mensagem.Designer.cs">
       <DependentUpon>Mensagem.cs</DependentUpon>
     </Compile>
+    <Compile Include="MensagensRecebidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MensagensRecebidas.Designer.cs">
+      <DependentUpon>MensagensRecebidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,12 +159,24 @@
     <Compile Include="ResponderMensagem.Designer.cs">
       <DependentUpon>ResponderMensagem.cs</DependentUpon>
     </Compile>
+    <Compile Include="TipoMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TipoMensagem.Designer.cs">
+      <DependentUpon>TipoMensagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Utensilio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utensilio.Designer.cs">
       <DependentUpon>Utensilio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisualizarMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualizarMensagem.Designer.cs">
+      <DependentUpon>VisualizarMensagem.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Bebida.resx">
       <DependentUpon>Bebida.cs</DependentUpon>
@@ -193,6 +211,9 @@
     <EmbeddedResource Include="Mensagem.resx">
       <DependentUpon>Mensagem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MensagensRecebidas.resx">
+      <DependentUpon>MensagensRecebidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuCliente.resx">
       <DependentUpon>MenuCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,8 +234,14 @@
     <EmbeddedResource Include="ResponderMensagem.resx">
       <DependentUpon>ResponderMensagem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TipoMensagem.resx">
+      <DependentUpon>TipoMensagem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utensilio.resx">
       <DependentUpon>Utensilio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisualizarMensagem.resx">
+      <DependentUpon>VisualizarMensagem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

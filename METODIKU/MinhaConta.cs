@@ -29,14 +29,14 @@ namespace METODIKU
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ListaMensagem listaMensagem = new ListaMensagem();
-            listaMensagem.Show();
+            TipoMensagem tipoMensagem = new TipoMensagem();
+            tipoMensagem.Show();
         }
 
         private void MinhaConta_Load(object sender, EventArgs e)
         {
             BD_OPINIAO opiniao = new BD_OPINIAO();
-            label1.Text = opiniao.ListaOpinioesRespondida().ToString();
+            label1.Text = opiniao.SomaOpinioesRespondida().ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)

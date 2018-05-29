@@ -40,9 +40,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 84);
+            this.dataGridView1.Location = new System.Drawing.Point(69, 168);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(618, 386);
+            this.dataGridView1.Size = new System.Drawing.Size(590, 304);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -50,7 +50,7 @@
             this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(26, 505);
+            this.button1.Location = new System.Drawing.Point(69, 505);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 35);
             this.button1.TabIndex = 13;
@@ -63,7 +63,7 @@
             this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(526, 505);
+            this.button2.Location = new System.Drawing.Point(541, 505);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 35);
             this.button2.TabIndex = 14;
@@ -77,7 +77,7 @@
             this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(526, 505);
+            this.button3.Location = new System.Drawing.Point(541, 505);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(118, 35);
             this.button3.TabIndex = 15;
@@ -91,12 +91,13 @@
             this.button7.BackColor = System.Drawing.Color.Red;
             this.button7.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(293, 508);
+            this.button7.Location = new System.Drawing.Point(326, 508);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(95, 32);
             this.button7.TabIndex = 16;
             this.button7.Text = "Sair";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // ListaMensagem

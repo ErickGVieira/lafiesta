@@ -133,3 +133,6 @@ F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.MinhaConta.resources
 F:\LAFIESTA\METODIKU\obj\Debug\METODIKU.ResponderMensagem.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.Utensilio.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.CalculadoraSimples.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.TipoMensagem.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.MensagensRecebidas.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.VisualizarMensagem.resources

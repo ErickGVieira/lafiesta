@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +28,28 @@ namespace METODIKU
         private void button2_Click(object sender, EventArgs e)
         {
             BD_OPINIAO opiniao = new BD_OPINIAO();
-            bool sucesso = opiniao.CadastrarOpiniao(comboBox1.SelectedIndex + 1, textBox1.Text, 0);
+            String reformatado = RemoveAccents(textBox1.Text);
+            bool sucesso = opiniao.CadastrarOpiniaoLF(comboBox1.SelectedIndex + 1, reformatado, 0);
             if (sucesso)
             {
-                MessageBox.Show("Sucesso!!", "Mensagem enviada com sucesso", MessageBoxButtons.OK);
+                MessageBox.Show("Mensagem enviada com sucesso!!", "Sucesso!", MessageBoxButtons.OK);
                 comboBox1.Text = "";
                 textBox1.Text = "";
             }
             else if (!sucesso)
-                MessageBox.Show("ERRO!!", "Convidado não foi cadastrado!", MessageBoxButtons.OK);
+                MessageBox.Show("Erro ao enviar mensagem para a equipe lá fiesta!!", "Erro!!", MessageBoxButtons.OK);
+        }
+
+        public string RemoveAccents(string text)
+        {
+            StringBuilder sbReturn = new StringBuilder();
+            var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
+            foreach (char letter in arrayText)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+                    sbReturn.Append(letter);
+            }
+            return sbReturn.ToString();
         }
     }
 }
