@@ -128,5 +128,12 @@ namespace METODIKU
             else if (!sucesso)
                 MessageBox.Show("ERRO!!", "Convidado não foi cadastrado!", MessageBoxButtons.OK);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Bebida bebida = new Bebida();
+            bebida.Show();
+        }
     }
 }

@@ -96,17 +96,17 @@ namespace METODIKU
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 6.0;
                 grandeza ="kg";
             }
-            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 9) //FAROFA
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 11) //FAROFA
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) / 10.0;
                 grandeza = " pct";
             }
-            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 10) //PÃO FRANCÊS
+            else if (comboBox1.Text == "CHURRASCO" && comboBox2.SelectedIndex == 12) //PÃO FRANCÊS
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) * 2;
                 grandeza = " unidade(s)";
             }
-            else if (comboBox1.Text == "CHURRASCO" && (comboBox2.SelectedIndex == 11 || comboBox2.SelectedIndex == 12)) //SALADA
+            else if (comboBox1.Text == "CHURRASCO" && (comboBox2.SelectedIndex == 9 || comboBox2.SelectedIndex == 10)) //SALADA
             {
                 total = int.Parse(convidados.TotalConvidados().ToString()) * 150;
                 grandeza = "g";

@@ -863,5 +863,72 @@ namespace METODIKU
                 this.conn.Close();
             }
         }
+
+        public DataTable tiposProdutos(int id_grupo)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscarGrupoComidas = String.Format("Select nome from tipo_produto where id_grupo = {0}", id_grupo);
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(buscarGrupoComidas, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
+        }
+
+        public bool CadastraProduto(String tipo, String observacao)
+        {
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string cmdInserir = String.Format("Insert Into produto(id_fornecedor, tipo, observacao) values({0},'{1}', '{2}')", AutenticacaoCliente.pegarId(), tipo, observacao);
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
+                {
+                    pgsqlcommand.ExecuteNonQuery();
+                    return true;
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+                //return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //return false;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+        }
     }
 }

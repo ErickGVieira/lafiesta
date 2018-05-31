@@ -34,5 +34,12 @@ namespace METODIKU
             this.Hide();
             minhaConta.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CadastroProdServ cadastroProdServ = new CadastroProdServ();
+            cadastroProdServ.Show();
+        }
     }
 }

@@ -136,3 +136,4 @@ C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\o
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.TipoMensagem.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.MensagensRecebidas.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.VisualizarMensagem.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.CadastroProdServ.resources

@@ -62,7 +62,7 @@ namespace METODIKU
                 Usuario usuario = new Usuario(cpf, nome, nomeUsuario, endereco, telefone, email, senha);
                 bool sucesso = conecta.CadastrarUsuario(usuario);
                 if (sucesso)
-                    MessageBox.Show("Cadastro com sucess!!", "Sucesso!", MessageBoxButtons.OK);
+                    MessageBox.Show("Cadastro com sucesso!!", "Sucesso!", MessageBoxButtons.OK);
                 else if (!sucesso)
                     MessageBox.Show("Usuário não foi cadastrado!!", "ERRO!", MessageBoxButtons.OK);
                 limpar();

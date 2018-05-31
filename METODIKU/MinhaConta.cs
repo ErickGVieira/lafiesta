@@ -21,9 +21,18 @@ namespace METODIKU
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MenuCliente menuCliente = new MenuCliente();
-            menuCliente.Show();
+            if (AutenticacaoCliente.pegarTipo() == 0 || AutenticacaoCliente.pegarTipo() == 1)
+            {
+                this.Hide();
+                MenuFornecedor menuFornecedor = new MenuFornecedor();
+                menuFornecedor.Show();
+            }
+            else
+            {
+                this.Hide();
+                MenuCliente menuCliente = new MenuCliente();
+                menuCliente.Show();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
