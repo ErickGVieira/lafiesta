@@ -12,6 +12,8 @@ namespace METODIKU
 {
     public partial class Login : Form
     {
+        BD_USUARIO usuario = new BD_USUARIO();
+
         public Login()
         {
             InitializeComponent();
@@ -23,7 +25,6 @@ namespace METODIKU
             if (textBox2.Text == "") label2.Visible = true;
             else
             {
-                BD_USUARIO usuario = new BD_USUARIO();
                 usuario.Login(textBox1.Text, textBox2.Text);
                 if(AutenticacaoCliente.pegarId() != 0)
                 {
@@ -64,6 +65,40 @@ namespace METODIKU
         {
             if (textBox2.Text == "") label2.Visible = true;
             else label2.Visible = false;
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                usuario.Login(textBox1.Text, textBox2.Text);
+                if (AutenticacaoCliente.pegarId() != 0)
+                {
+                    if (AutenticacaoCliente.pegarTipo() == 2)
+                    {
+                        this.Hide();
+                        MenuCliente menuCliente = new MenuCliente();
+                        menuCliente.Show();
+                    }
+                    else if (AutenticacaoCliente.pegarTipo() == 0 || AutenticacaoCliente.pegarTipo() == 1)
+                    {
+                        this.Hide();
+                        MenuFornecedor menuFornecedor = new MenuFornecedor();
+                        menuFornecedor.Show();
+                    }
+                    else if (AutenticacaoCliente.pegarTipo() == 3)
+                    {
+                        this.Hide();
+                        ListaMensagem listaMensagem = new ListaMensagem();
+                        listaMensagem.Show();
+                    }
+                }
+                else if (AutenticacaoCliente.pegarId() == 0)
+                {
+                    MessageBox.Show("Não há usuário com esses dados", "Erro!", MessageBoxButtons.OK);
+                }
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)

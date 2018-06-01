@@ -41,7 +41,7 @@ namespace METODIKU
         private void button1_Click(object sender, EventArgs e)
         {
             String reformatado = RemoveAccents(textBox1.Text);
-            bool sucesso = itens.CadastraProduto(comboBox2.Text, reformatado);
+            bool sucesso = itens.CadastraProduto(comboBox2.Text, reformatado, textBox2.Text.ToUpper());
             if (sucesso)
                 MessageBox.Show("Sucesso!!", "Cadastrado com sucesso!", MessageBoxButtons.OK);
             else if (!sucesso)
@@ -50,7 +50,7 @@ namespace METODIKU
             textBox1.Text = "";
             comboBox1.Text = "";
             comboBox2.Text = "";
-
+            textBox2.Text = "";
         }
 
         public string RemoveAccents(string text)

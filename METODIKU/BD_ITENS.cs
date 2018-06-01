@@ -897,7 +897,7 @@ namespace METODIKU
             return dt;
         }
 
-        public bool CadastraProduto(String tipo, String observacao)
+        public bool CadastraProduto(String tipo, String observacao, String cidade)
         {
             try
             {
@@ -906,7 +906,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string cmdInserir = String.Format("Insert Into produto(id_fornecedor, tipo, observacao) values({0},'{1}', '{2}')", AutenticacaoCliente.pegarId(), tipo, observacao);
+                string cmdInserir = String.Format("Insert Into produto(id_fornecedor, tipo, observacao, cidade) values({0},'{1}', '{2}', '{3}')", AutenticacaoCliente.pegarId(), tipo, observacao, cidade);
 
                 using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(cmdInserir, this.conn))
                 {
@@ -930,5 +930,88 @@ namespace METODIKU
                 this.conn.Close();
             }
         }
+        public DataTable BuscaFornecedor(String cidade, String tipo)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscarfornecedor = String.Format("select id,tipo,observacao,cidade from produto where cidade like '{0}' and tipo = '{1}'", cidade, tipo);
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(buscarfornecedor, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
+        }
+
+        public String[] infoFornecedor(int id)
+        {
+            String[] retorno = new String[4];
+            //DataSet ds = new DataSet();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscar = String.Format("select c.nome, c.telefone, p.cidade, p.observacao  from produto p INNER JOIN usuario c ON p.id_fornecedor = c.id where p.id = {0}", id);
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(buscar, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            retorno[0] = dr.GetString(0);
+                            retorno[1] = dr.GetString(1);
+                            retorno[2] = dr.GetString(2);
+                            retorno[3] = dr.GetString(3);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                        retorno = null;
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return retorno;
+        }
+
     }
 }

@@ -60,5 +60,12 @@ namespace METODIKU
             CalculadoraSimples calculadoraSimples = new CalculadoraSimples();
             calculadoraSimples.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BuscaFornecedor busca = new BuscaFornecedor();
+            busca.Show();
+        }
     }
 }
