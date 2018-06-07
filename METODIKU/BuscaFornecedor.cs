@@ -67,5 +67,15 @@ namespace METODIKU
             MenuCliente menuCliente = new MenuCliente();
             menuCliente.Show();
         }
+
+        private void BuscaFornecedor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

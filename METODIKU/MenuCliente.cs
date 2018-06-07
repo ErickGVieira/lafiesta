@@ -67,5 +67,12 @@ namespace METODIKU
             BuscaFornecedor busca = new BuscaFornecedor();
             busca.Show();
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Ajuda ajuda = new Ajuda();
+            ajuda.Show();
+        }
     }
 }

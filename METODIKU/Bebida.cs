@@ -77,13 +77,13 @@ namespace METODIKU
                 grandeza = "ml";
             }
 
-            if(comboBox1.Text == "ÁGUAS" && comboBox2.SelectedIndex == 0)
+            if(comboBox1.Text == "AGUAS" && comboBox2.SelectedIndex == 0)
             {
-                total = int.Parse(convidados.TotalCriancas().ToString()) * 100;
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 100;
                 grandeza = "ml";
-            }else if (comboBox1.Text == "ÁGUAS" && comboBox2.SelectedIndex == 0)
+            }else if (comboBox1.Text == "AGUAS" && comboBox2.SelectedIndex == 1)
             {
-                total = int.Parse(convidados.TotalCriancas().ToString()) * 300;
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 300;
                 grandeza = "ml";
             }
 

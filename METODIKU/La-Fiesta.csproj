@@ -47,7 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ajuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajuda.Designer.cs">
+      <DependentUpon>Ajuda.cs</DependentUpon>
+    </Compile>
     <Compile Include="AutenticacaoCliente.cs" />
+    <Compile Include="BD_ALUGUEL.cs" />
     <Compile Include="BD_CONVIDADOS.cs" />
     <Compile Include="BD_FESTA.cs" />
     <Compile Include="BD_ITENS.cs" />
@@ -115,11 +122,23 @@
     <Compile Include="FornecedorCliente.Designer.cs">
       <DependentUpon>FornecedorCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FornecedorFesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FornecedorFesta.Designer.cs">
+      <DependentUpon>FornecedorFesta.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfoFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InfoFornecedor.Designer.cs">
       <DependentUpon>InfoFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaFornecedor.Designer.cs">
+      <DependentUpon>ListaFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="ListaMensagem.cs">
       <SubType>Form</SubType>
@@ -196,6 +215,9 @@
     <Compile Include="VisualizarMensagem.Designer.cs">
       <DependentUpon>VisualizarMensagem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ajuda.resx">
+      <DependentUpon>Ajuda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bebida.resx">
       <DependentUpon>Bebida.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,8 +248,14 @@
     <EmbeddedResource Include="FornecedorCliente.resx">
       <DependentUpon>FornecedorCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FornecedorFesta.resx">
+      <DependentUpon>FornecedorFesta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InfoFornecedor.resx">
       <DependentUpon>InfoFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaFornecedor.resx">
+      <DependentUpon>ListaFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListaMensagem.resx">
       <DependentUpon>ListaMensagem.cs</DependentUpon>

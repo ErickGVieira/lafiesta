@@ -103,6 +103,7 @@
             this.Name = "Mensagem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mensagem";
+            this.Load += new System.EventHandler(this.Mensagem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

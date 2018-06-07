@@ -51,5 +51,14 @@ namespace METODIKU
             }
             return sbReturn.ToString();
         }
+
+        private void Mensagem_Load(object sender, EventArgs e)
+        {
+            textBox1.Multiline = true;
+            textBox1.ScrollBars = ScrollBars.Vertical;
+            textBox1.AcceptsReturn = true;
+            textBox1.AcceptsTab = true;
+            textBox1.WordWrap = true;
+        }
     }
 }

@@ -77,9 +77,7 @@ namespace METODIKU
                 this.Hide();
                 Cadastro cadastro = new Cadastro();
                 cadastro.Show();
-            }
-
-            if (tipo == 1)
+            }else if (tipo == 1 || tipo == 0)
             {
                 this.Hide();
                 CadastroFornecedor cadastroFornecedor = new CadastroFornecedor();

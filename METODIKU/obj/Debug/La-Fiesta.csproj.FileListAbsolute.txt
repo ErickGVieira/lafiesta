@@ -139,3 +139,16 @@ C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\o
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.CadastroProdServ.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.BuscaFornecedor.resources
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.InfoFornecedor.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.Ajuda.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.Ajuda.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.Bebida.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.BuscaFornecedor.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.CadastroProdServ.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.CalculadoraSimples.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.InfoFornecedor.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.MensagensRecebidas.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.TipoMensagem.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.Utensilio.resources
+H:\LAFIESTA\METODIKU\obj\Debug\METODIKU.VisualizarMensagem.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.FornecedorFesta.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.ListaFornecedor.resources

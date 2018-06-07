@@ -39,7 +39,7 @@ namespace METODIKU
         private void button1_Click(object sender, EventArgs e)
         {
             int tipo = AutenticacaoCliente.pegarTipo();
-            if (tipo == 1)
+            if (tipo == 1 || tipo == 0)
             {
                 this.Hide();
                 MinhaConta minhaConta = new MinhaConta();
@@ -156,7 +156,7 @@ namespace METODIKU
         private void CadastroFornecedor_Load(object sender, EventArgs e)
         {
             int tipo = AutenticacaoCliente.pegarTipo();
-            if (tipo == 1)
+            if (tipo == 1 || tipo == 0)
             {
                 button4.Visible = true;
                 conecta.PegarFornecedor();

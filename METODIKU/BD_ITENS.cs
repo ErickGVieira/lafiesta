@@ -1013,5 +1013,37 @@ namespace METODIKU
             return retorno;
         }
 
+        public DataTable BuscaLocal(String cidade)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscarfornecedor = String.Format("select id,tipo,observacao,cidade from produto where tipo = 'ESPACO' and cidade = '{0}'", cidade);
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(buscarfornecedor, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
+        }
     }
 }

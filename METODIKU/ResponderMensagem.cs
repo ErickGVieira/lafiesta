@@ -35,6 +35,11 @@ namespace METODIKU
         {
             textBox1.Text = this.nome;
             textBox2.Text = this.descricao;
+            textBox3.Multiline = true;
+            textBox3.ScrollBars = ScrollBars.Vertical;
+            textBox3.AcceptsReturn = true;
+            textBox3.AcceptsTab = true;
+            textBox3.WordWrap = true;
         }
 
         private void button3_Click(object sender, EventArgs e)

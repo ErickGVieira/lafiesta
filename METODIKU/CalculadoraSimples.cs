@@ -313,14 +313,14 @@ namespace METODIKU
                 grandeza = "ml";
             }
 
-            if (comboBox2.Text == "ÁGUAS" && comboBox5.SelectedIndex == 0)
+            if (comboBox2.Text == "AGUAS" && comboBox5.SelectedIndex == 0)
             {
-                total = int.Parse(convidados.TotalCriancas().ToString()) * 100;
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 100;
                 grandeza = "ml";
             }
-            else if (comboBox2.Text == "ÁGUAS" && comboBox5.SelectedIndex == 0)
+            else if (comboBox2.Text == "AGUAS" && comboBox5.SelectedIndex == 1)
             {
-                total = int.Parse(convidados.TotalCriancas().ToString()) * 300;
+                total = int.Parse(convidados.TotalConvidados().ToString()) * 300;
                 grandeza = "ml";
             }
 

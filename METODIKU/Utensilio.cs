@@ -135,5 +135,12 @@ namespace METODIKU
             Bebida bebida = new Bebida();
             bebida.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FornecedorFesta fornecedor = new FornecedorFesta();
+            fornecedor.Show();
+        }
     }
 }

@@ -22,7 +22,11 @@ namespace METODIKU
 
         private void CadastroProdServ_Load(object sender, EventArgs e)
         {
-            
+            textBox1.Multiline = true;
+            textBox1.ScrollBars = ScrollBars.Vertical;
+            textBox1.AcceptsReturn = true;
+            textBox1.AcceptsTab = true;
+            textBox1.WordWrap = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
