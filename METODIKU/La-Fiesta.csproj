@@ -34,6 +34,12 @@
     <Reference Include="Npgsql">
       <HintPath>..\..\..\..\Downloads\Npgsql2-MS.Net-bin\MS.Net\bin\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -128,6 +134,7 @@
     <Compile Include="FornecedorFesta.Designer.cs">
       <DependentUpon>FornecedorFesta.cs</DependentUpon>
     </Compile>
+    <Compile Include="GerarPdf.cs" />
     <Compile Include="InfoFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +305,7 @@
     <EmbeddedResource Include="VisualizarMensagem.resx">
       <DependentUpon>VisualizarMensagem.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

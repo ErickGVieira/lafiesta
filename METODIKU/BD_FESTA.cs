@@ -58,6 +58,56 @@ namespace METODIKU
             return 0;
         }
 
+        public String[] pegarDadosFesta(int idUser, int idFesta)
+        {
+            String[] dados = new String[4];
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscar = String.Format("select nome_festa, local, convidados, data from festa where id_usuario = '{0}' and id = '{1}' order by id DESC;", idUser, idFesta);
+
+                using (NpgsqlCommand pgsqlcommand = new NpgsqlCommand(buscar, this.conn))
+                {
+                    NpgsqlDataReader dr = pgsqlcommand.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            dados[0] = dr.GetString(0);
+                            dados[1] = dr.GetString(1);
+                            dados[2] = dr.GetInt32(2).ToString();
+                            dados[3] = dr.GetString(3);
+
+                            return dados;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não funcionou!");
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dados;
+        }
+
         public bool CadastrarFesta()
         {
             try

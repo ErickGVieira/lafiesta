@@ -362,7 +362,7 @@ namespace METODIKU
                 //Abra a conexão com o PgSQL                  
                 this.conn.Open();
 
-                string convidados = String.Format("select c.id, g.nome, c.tipo, c.quantidade from bebida c, tipo_bebida t, grupo_bebida g where id_festa = {0} and c.tipo = t.nome and t.id_grupo = g.id", idFesta);
+                string convidados = String.Format("select c.id, g.nome, c.tipo, c.quantidade from bebida c, tipo_bebida t, grupo_bebida g where id_festa = {0} and c.tipo = t.nome and t.id_grupo = g.id order by c.id", idFesta);
 
                 using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(convidados, this.conn))
                 {

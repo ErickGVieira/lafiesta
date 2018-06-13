@@ -14,6 +14,8 @@ namespace METODIKU
     {
 
         BD_ALUGUEL aluguel = new BD_ALUGUEL();
+        BD_FESTA festa = new BD_FESTA();
+
         public ListaFornecedor()
         {
             InitializeComponent();
@@ -39,6 +41,20 @@ namespace METODIKU
                 dataGridView1.DataSource = aluguel.ListaAlugueis();
             else
                 MessageBox.Show("Erro ao apagar um aluguel", "Erro", MessageBoxButtons.OK);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Festa cadastrada com sucesso!", "Sucesso", MessageBoxButtons.OK);
+            this.Hide();
+            MenuCliente menuCliente = new MenuCliente();
+            menuCliente.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GerarPdf pdf = new GerarPdf();
+            pdf.relatorio(AutenticacaoCliente.pegarId(), festa.pegarFesta(AutenticacaoCliente.pegarId()));
         }
     }
 }
