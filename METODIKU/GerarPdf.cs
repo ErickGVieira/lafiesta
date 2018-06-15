@@ -28,11 +28,11 @@ namespace METODIKU
 
                 var font = new PdfSharp.Drawing.XFont("Comic Sans MS", 20);
                 var font2 = new PdfSharp.Drawing.XFont("Verdana", 12);
-                
-                graphics.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Black, 10, 10, 576, 1050, 10, 10);
+
+                graphics.DrawRoundedRectangle(PdfSharp.Drawing.XPens.Black, 10, 10, 576, 822, 10, 10);
 
                 textFormatter.DrawString(dados[0], font, titulos, new PdfSharp.Drawing.XRect(40, 50, page.Width, page.Height));
-                graphics.DrawImage(PdfSharp.Drawing.XImage.FromFile(@"\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\Resources\tiozao.png"), 530, 30, 50, 50);
+                graphics.DrawImage(PdfSharp.Drawing.XImage.FromFile(@"C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\Resources\tiozao.png"), 530, 30, 50, 50);
 
                 textFormatter.DrawString("Local da festa: ", font2, titulos, new PdfSharp.Drawing.XRect(40, 100, 150, 70));
                 textFormatter.DrawString(dados[1], font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(132, 100, 150, 70));
@@ -44,54 +44,35 @@ namespace METODIKU
 
                 textFormatter.DrawString("Comidas: ", font2, titulos, new PdfSharp.Drawing.XRect(40, 160, 150, 70));
 
-                textFormatter.DrawString("Número", font2, titulos, new PdfSharp.Drawing.XRect(60, 190, 30, 70));
-                textFormatter.DrawString("Tipo", font2, titulos, new PdfSharp.Drawing.XRect(150, 190, 100, 70));
-                textFormatter.DrawString("Nome", font2, titulos, new PdfSharp.Drawing.XRect(290, 190, 100, 70));
-                textFormatter.DrawString("Unidade", font2, titulos, new PdfSharp.Drawing.XRect(460, 190, 100, 70));
+                textFormatter.DrawString("Número", font2, titulos, new PdfSharp.Drawing.XRect(60, 180, 30, 70));
+                textFormatter.DrawString("Tipo", font2, titulos, new PdfSharp.Drawing.XRect(170, 180, 100, 70));
+                textFormatter.DrawString("Nome", font2, titulos, new PdfSharp.Drawing.XRect(310, 180, 100, 70));
+                textFormatter.DrawString("Unidade", font2, titulos, new PdfSharp.Drawing.XRect(470, 180, 100, 70));
 
                 DataTable comidas = new DataTable();
                 comidas = itens.comidas(idFesta);
-                int y = 220;
+                int y = 205;
                 string item = null;
                 if (comidas != null)
                 {
-                    for(int i = 0; i < comidas.Rows.Count; i++)
+                    for (int i = 0; i < comidas.Rows.Count; i++)
                     {
                         DataRow dr = comidas.Rows[i];
-                        if(dr[1].ToString() == "FINGER FOODS") {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "          " + dr[2].ToString() + "               " + dr[3].ToString();
-                        }else if (dr[1].ToString() == "VEGETARIANA")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "           " + dr[2].ToString() + "     " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "DOCE")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                        " + dr[2].ToString() + "                           " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "CHURRASCO")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "             " + dr[2].ToString() + "                         " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "COFFEE BREAK")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "           " + dr[2].ToString() + "                              " + dr[3].ToString();
-                        }
-                        else
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                        " + dr[2].ToString() + "                              " + dr[3].ToString();
-                        }
-                        textFormatter.DrawString(item, font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(80, y, 550, 70));
+                        textFormatter.DrawString(dr[0].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(80, y, 550, 70));
+                        textFormatter.DrawString(dr[1].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(140, y, 550, 70));
+                        textFormatter.DrawString(dr[2].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(270, y, 550, 70));
+                        textFormatter.DrawString(dr[3].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(480, y, 550, 70));
                         y += 20;
                     }
                 }
 
-                textFormatter.DrawString("Bebidas: ", font2, titulos, new PdfSharp.Drawing.XRect(40, y+20, 150, 70));
+                textFormatter.DrawString("Bebidas: ", font2, titulos, new PdfSharp.Drawing.XRect(40, y + 20, 150, 70));
                 y += 40;
 
                 textFormatter.DrawString("Número", font2, titulos, new PdfSharp.Drawing.XRect(60, y, 30, 70));
                 textFormatter.DrawString("Tipo", font2, titulos, new PdfSharp.Drawing.XRect(150, y, 100, 70));
                 textFormatter.DrawString("Nome", font2, titulos, new PdfSharp.Drawing.XRect(290, y, 100, 70));
-                textFormatter.DrawString("Unidade", font2, titulos, new PdfSharp.Drawing.XRect(460, y, 100, 70));
+                textFormatter.DrawString("Unidade", font2, titulos, new PdfSharp.Drawing.XRect(470, y, 100, 70));
 
                 DataTable bebidas = new DataTable();
                 bebidas = itens.bebidas(idFesta);
@@ -101,31 +82,10 @@ namespace METODIKU
                     for (int i = 0; i < bebidas.Rows.Count; i++)
                     {
                         DataRow dr = bebidas.Rows[i];
-                        if (dr[1].ToString() == "ALCOOLICAS")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                  " + dr[2].ToString() + "                              " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "REFRIGERANTES")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "            " + dr[2].ToString() + "                                  " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "SUCOS")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                       " + dr[2].ToString() + "                         " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "ÁGUAS")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                  " + dr[2].ToString() + "                             " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "COFFEE BREAK")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                 " + dr[2].ToString() + "                                " + dr[3].ToString();
-                        }
-                        else
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                       " + dr[2].ToString() + "                             " + dr[3].ToString();
-                        }
-                        textFormatter.DrawString(item, font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(80, y, 550, 70));
+                        textFormatter.DrawString(dr[0].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(80, y, 550, 70));
+                        textFormatter.DrawString(dr[1].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(140, y, 550, 70));
+                        textFormatter.DrawString(dr[2].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(270, y, 550, 70));
+                        textFormatter.DrawString(dr[3].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(480, y, 550, 70));
                         y += 20;
                     }
                 }
@@ -136,7 +96,7 @@ namespace METODIKU
                 textFormatter.DrawString("Número", font2, titulos, new PdfSharp.Drawing.XRect(60, y, 30, 70));
                 textFormatter.DrawString("Tipo", font2, titulos, new PdfSharp.Drawing.XRect(150, y, 100, 70));
                 textFormatter.DrawString("Nome", font2, titulos, new PdfSharp.Drawing.XRect(290, y, 100, 70));
-                textFormatter.DrawString("Unidade", font2, titulos, new PdfSharp.Drawing.XRect(460, y, 100, 70));
+                textFormatter.DrawString("Unidade", font2, titulos, new PdfSharp.Drawing.XRect(470, y, 100, 70));
 
                 DataTable utensilios = new DataTable();
                 utensilios = itens.utensilios(idFesta);
@@ -146,39 +106,10 @@ namespace METODIKU
                     for (int i = 0; i < utensilios.Rows.Count; i++)
                     {
                         DataRow dr = utensilios.Rows[i];
-                        if (dr[1].ToString() == "COLHERES")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "              " + dr[2].ToString() + "               " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "COPOS")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                  " + dr[2].ToString() + "            " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "MESA")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                         " + dr[2].ToString() + "                       " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "GARFOS")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                  " + dr[2].ToString() + "                " + dr[3].ToString();
-                        }
-                        else if (dr[1].ToString() == "FACAS")
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "                      " + dr[2].ToString() + "                    " + dr[3].ToString();
-                        }
-                        else
-                        {
-                            item = dr[0].ToString() + "          " + dr[1].ToString() + "              " + dr[2].ToString() + "               " + dr[3].ToString();
-                        }
-                        //else if (dr[1].ToString() == "REFRIGERANTES")
-                        //{
-                        // item = dr[0].ToString() + "          " + dr[1].ToString() + "            " + dr[2].ToString() + "                                  " + dr[3].ToString();
-                        //}
-                        //else if (dr[1].ToString() == "SUCOS")
-                        //{
-                        //   item = dr[0].ToString() + "          " + dr[1].ToString() + "                       " + dr[2].ToString() + "                             " + dr[3].ToString();
-                        //}
-                        textFormatter.DrawString(item, font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(80, y, 550, 70));
+                        textFormatter.DrawString(dr[0].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(80, y, 550, 70));
+                        textFormatter.DrawString(dr[1].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(140, y, 550, 70));
+                        textFormatter.DrawString(dr[2].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(270, y, 550, 70));
+                        textFormatter.DrawString(dr[3].ToString(), font2, PdfSharp.Drawing.XBrushes.Black, new PdfSharp.Drawing.XRect(480, y, 550, 70));
                         y += 20;
                     }
                 }
@@ -189,4 +120,3 @@ namespace METODIKU
         }
     }
 }
-

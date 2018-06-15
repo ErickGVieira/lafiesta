@@ -74,5 +74,12 @@ namespace METODIKU
             Ajuda ajuda = new Ajuda();
             ajuda.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MinhasFestas minhasFestas = new MinhasFestas();
+            minhasFestas.Show();
+        }
     }
 }

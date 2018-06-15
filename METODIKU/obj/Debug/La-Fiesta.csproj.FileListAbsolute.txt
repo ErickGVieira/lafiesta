@@ -158,3 +158,6 @@ C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\b
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\bin\Debug\PdfSharp.Charting.xml
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\bin\Debug\de\PdfSharp.resources.dll
 C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.MinhasFestas.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.ListaProdServ.resources
+C:\Users\erick\Desktop\Projeto Interdisciplinar 2º Semestre\LAFIESTA\METODIKU\obj\Debug\METODIKU.AgendaFesta.resources

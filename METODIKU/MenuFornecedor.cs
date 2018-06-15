@@ -41,5 +41,19 @@ namespace METODIKU
             CadastroProdServ cadastroProdServ = new CadastroProdServ();
             cadastroProdServ.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ListaProdServ lista = new ListaProdServ();
+            lista.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AgendaFesta agenda = new AgendaFesta();
+            agenda.Show();
+        }
     }
 }

@@ -184,5 +184,107 @@ namespace METODIKU
                 this.conn.Close();
             }
         }
+
+        public DataTable PegarFestaSource()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscar = String.Format("select id,nome_festa, local, convidados, data from festa where id_usuario = '{0}' order by id ASC;", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(buscar, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
+        }
+
+        public DataTable PegarProdServ()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscar = String.Format("select id, tipo, observacao, cidade from produto where id_fornecedor = {0} order by id ASC;", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(buscar, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
+        }
+
+        public DataTable PegarAgenda()
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                this.conn = new NpgsqlConnection(this.connString);
+
+                //Abra a conexão com o PgSQL                  
+                this.conn.Open();
+
+                string buscar = String.Format("select f.nome_festa, f.data, f.local, f.convidados, p.tipo, p.cidade from festa f, produto p, aluguel a where f.id = a.id_festa and p.id = a.id_produto and p.id_fornecedor = {0}", AutenticacaoCliente.pegarId());
+
+                using (NpgsqlDataAdapter pgsqlcommand = new NpgsqlDataAdapter(buscar, this.conn))
+                {
+                    pgsqlcommand.Fill(dt);
+                }
+
+            }
+            catch (NpgsqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+            return dt;
+        }
     }
 }
